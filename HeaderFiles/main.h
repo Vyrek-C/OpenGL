@@ -23,28 +23,21 @@
 #include <glm/gtx/range.hpp>
 #include <glm/gtc/random.inl>
 
-class MainClass
-{
-public:
-	void RegenerateTriangle();
-protected:
-	std::vector<glm::vec3> trinagleVertices(float radius);
-	void processInput(GLFWwindow* window);
-	void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-private:
-	const int windowWidth = 800;
-	const int windowHeight = 600;
+void RegenerateTriangle();
+std::vector<glm::vec3> trinagleVertices(float radius);
+void processInput(GLFWwindow* window);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+const int windowWidth = 800;
+const int windowHeight = 600;
+float aspectRatio = (float)windowWidth / (float)windowHeight;
 
-	float aspectRatio = (float)windowWidth / (float)windowHeight;
+int success;
+char infoLog[512];
 
-	int success;
-	char infoLog[512];
+float color[4] = { 0.2f, 0.6f, 0.5f, 1.0f };
+float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
+bool bDrawTriangle = true;
 
-	float color[4] = { 0.2f, 0.6f, 0.5f, 1.0f };
-	float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
+long long int seed = time(NULL);
 
-	bool bDrawTriangle = true;
-
-	long long int seed = time(NULL);
-};
 

@@ -1,25 +1,5 @@
 #include <main.h>
 
-void GenerateTriangle(VAO vao, VBO vbo, std::vector<glm::vec3>& vertices);
-std::vector<glm::vec3> trinagleVertices(float radius);
-void processInput(GLFWwindow* window);
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void InitImGui(GLFWwindow* window);
-
-const int windowWidth = 800;
-const int windowHeight = 600;
-
-float aspectRatio = (float)windowWidth / (float)windowHeight;
-
-int success;
-char infoLog[512];
-
-float color[4] = { 0.2f, 0.6f, 0.5f, 1.0f };
-float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
-
-bool bDrawTriangle = true;
-long long int seed = time(NULL);
-
 int main()
 {
 	// Checks if initialization of glfw was successfull
@@ -69,10 +49,10 @@ int main()
 
 	std::vector<glm::vec3> verticies;
 
-	VAO vao;
-	VBO vbo;
+	VAO newVAO;
+	VBO newVBO;
 
-	GenerateTriangle(vao, vbo, verticies);
+	GenerateTriangle(newVAO, newVBO, verticies);
 	
 	InitImGui(Window);
 
@@ -101,7 +81,7 @@ int main()
 
 		if (ImGui::Button("Generate Triangle"))
 		{
-			GenerateTriangle(vao, vbo, verticies);
+			GenerateTriangle(newVAO, newVBO, verticies);
 		}
 
 		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
@@ -114,9 +94,9 @@ int main()
 
 		if (bDrawTriangle)
 		{
-			vao.Bind();
+			newVAO.Bind();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
-			vao.UnBind();
+			newVAO.UnBind();
 		}
 
 		ImGui::Render();
@@ -130,8 +110,8 @@ int main()
 		return 0;
 	}
 	// Clean up the buffers and terminate GLFW
-	vao.Delete();
-	vbo.Delete();
+	newVAO.Delete();
+	newVBO.Delete();
 	//newEBO.Delete();
 	glfwTerminate();
 	return 0;
@@ -167,17 +147,15 @@ std::vector<glm::vec3> trinagleVertices(float radius)
 	return vectorArray;
 }
 
-void GenerateTriangle(VAO vao, VBO vbo, std::vector<glm::vec3> &vertices)
+void GenerateTriangle(VAO newVAO, VBO newVBO, std::vector<glm::vec3> &vertices)
 {
-	vao.UnBind();
-	vbo.UnBind();
 	vertices = trinagleVertices(rand() % 5 + 1);
-	vbo.Bind();	
-	vbo.BindBufferData(vertices.size() * sizeof(glm::vec3), vertices);
+	newVBO.Bind();	
+	newVBO.BindBufferData(vertices.size() * sizeof(glm::vec3), vertices);
 
-	vao.LinkVBO(0, 0, (void*)0);
-	vao.UnBind();
-	vbo.UnBind();
+	newVAO.LinkVBO(0, 0, (void*)0);
+	newVAO.UnBind();
+	newVBO.UnBind();
 }
 
 void InitImGui(GLFWwindow* window)
