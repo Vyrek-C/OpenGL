@@ -1,5 +1,5 @@
 #include <glad/glad.h>
-#include <EBO.h>
+#include <HeaderFiles/EBO.h>
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 

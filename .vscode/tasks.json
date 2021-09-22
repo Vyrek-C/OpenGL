@@ -1,34 +1,35 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C/C++: g++.exe build active file",
-			"command": "C:\\MinGW\\bin\\g++.exe",
-			"args": [
-				"-std=c++17",
-				"-stdlib=libc++",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
-				"-lglad",
-				"-lGLFW",
-				"-lglm",
-				"-limgui",
-				"-lKHR"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: C:\\MinGW\\bin\\g++.exe"
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I./include",
+                "-L./lib",
+                "src/\\*.cpp",
+                "src/glad.c",
+                "-lglu32", 
+                "-lgdi32", 
+                "-lshell32", 
+                "-limm32",
+                "-lglfw3dll",
+                "-o",
+                "${workspaceFolder}/myprogram.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
 }

@@ -1,4 +1,43 @@
-#include <main.h>
+#define _USE_MATH_DEFINES
+
+#include <iostream>
+#include <vector>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <stdlib.h>  
+#include <time.h> 
+#include <cmath>
+
+#include <HeaderFiles/Shader.h>
+#include <HeaderFiles/VAO.H>
+#include <HeaderFiles/VBO.H>
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/range.hpp>
+#include <glm/gtc/random.inl>
+
+void RegenerateTriangle();
+void InitImGui(GLFWwindow* window);
+std::vector<glm::vec3> trinagleVertices(float radius);
+void processInput(GLFWwindow* window);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void GenerateTriangle(VAO newVAO, VBO newVBO, std::vector<glm::vec3> &vertices);
+const int windowWidth = 800;
+const int windowHeight = 600;
+float aspectRatio = (float)windowWidth / (float)windowHeight;
+
+int success;
+char infoLog[512];
+
+float color[4] = { 0.2f, 0.6f, 0.5f, 1.0f };
+float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
+bool bDrawTriangle = true;
+long long int seed = time(NULL);
 
 int main()
 {
@@ -54,7 +93,7 @@ int main()
 
 	GenerateTriangle(newVAO, newVBO, verticies);
 	
-	InitImGui(Window);
+	//InitImGui(Window);
 
 	while (!glfwWindowShouldClose(Window))
 	{
@@ -63,10 +102,10 @@ int main()
 		glClearColor(0.1f, 0.2f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-		ImGui::Begin("OpenGL ImGui");
+		// ImGui_ImplOpenGL3_NewFrame();
+		// ImGui_ImplGlfw_NewFrame();
+		// ImGui::NewFrame();
+		// ImGui::Begin("OpenGL ImGui");
 
 		newShader.use();
 
@@ -79,15 +118,15 @@ int main()
 		//translateMove = glm::rotate(translateMove, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
 		newShader.setMat4("translateMove", translateMove);
 
-		if (ImGui::Button("Generate Triangle"))
-		{
-			GenerateTriangle(newVAO, newVBO, verticies);
-		}
+		// if (ImGui::Button("Generate Triangle"))
+		// {
+		// 	GenerateTriangle(newVAO, newVBO, verticies);
+		// }
 
-		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
-		ImGui::ColorEdit4("Color RGBA:", color);
-		ImGui::SliderFloat3("Size: ", sizeMultipe, 1.0f, 2.0f);
-		ImGui::End();
+		// ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
+		// ImGui::ColorEdit4("Color RGBA:", color);
+		// ImGui::SliderFloat3("Size: ", sizeMultipe, 1.0f, 2.0f);
+		// ImGui::End();
 
 		newShader.setVec4("color", color);
 		newShader.setVec3("size", sizeMultipe);
@@ -99,15 +138,10 @@ int main()
 			newVAO.UnBind();
 		}
 
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		// ImGui::Render();
+		// ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		glfwPollEvents();
-	}
-	while (GLenum error = glGetError())
-	{
-		std::cout << "[OpenGL:ERROR] (code " << error << ") at " << std::endl;
-		return 0;
 	}
 	// Clean up the buffers and terminate GLFW
 	newVAO.Delete();
@@ -160,10 +194,10 @@ void GenerateTriangle(VAO newVAO, VBO newVBO, std::vector<glm::vec3> &vertices)
 
 void InitImGui(GLFWwindow* window)
 {
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 330");
-	ImGui::StyleColorsDark();
+	// IMGUI_CHECKVERSION();
+	// ImGui::CreateContext();
+	// ImGuiIO& io = ImGui::GetIO();
+	// ImGui_ImplGlfw_InitForOpenGL(window, true);
+	// ImGui_ImplOpenGL3_Init("#version 330");
+	// ImGui::StyleColorsDark();
 }
