@@ -93,6 +93,8 @@ int main()
 
 	GenerateTriangle(newVAO, newVBO, verticies);
 	
+	//TODO #1 Fix the ImGui reference issues
+
 	//InitImGui(Window);
 
 	while (!glfwWindowShouldClose(Window))
