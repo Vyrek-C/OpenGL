@@ -79,7 +79,7 @@ int main()
 
 		glm::mat4 translateMove = glm::mat4(1.0f);
 		translateMove = glm::translate(translateMove, glm::vec3(0.0f, 0.0f, -10.f));
-		//translateMove = glm::rotate(translateMove, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		translateMove = glm::rotate(translateMove, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
 		newShader.setMat4("translateMove", translateMove);
 
 		if (ImGui::Button("Generate Triangle"))

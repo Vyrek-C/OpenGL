@@ -1,4 +1,4 @@
-#include <HeaderFiles/VAO.H>
+#include <HeaderFiles/VAO.h>
 
 VAO::VAO()
 {
@@ -7,7 +7,6 @@ VAO::VAO()
 
 void VAO::LinkVBO(GLuint index, GLsizei stride, const void* pointer)
 {
-	Bind();
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, pointer);
 	glEnableVertexAttribArray(0);
 }

@@ -1,18 +1,18 @@
-#include <glad/glad.h>
 #include <HeaderFiles/EBO.h>
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
-
 
 EBO::EBO()
 {
 	glGenBuffers(1, &ID);
 }
 
-void EBO::Bind(GLuint* indicies, GLsizeiptr size)
+void EBO::Bind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indicies, GL_STATIC_DRAW);
+}
+
+void EBO::BindBufferData(std::vector<unsigned int> indicies)
+{
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicies.size() * sizeof(unsigned int), indicies.data(), GL_STATIC_DRAW);
 }
 
 void EBO::UnBind()
@@ -22,6 +22,6 @@ void EBO::UnBind()
 
 void EBO::Delete()
 {
-	glDeleteBuffers(GL_ELEMENT_ARRAY_BUFFER, &ID);
+	glDeleteBuffers(1, &ID);
 }
 

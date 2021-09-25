@@ -1,0 +1,11 @@
+C:/Users/Martin/OpenGL/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/Experimental.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/Nightly.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/cmOpenGL.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/Continuous.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/PACKAGE.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/glad.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/imgui.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Martin/OpenGL/build/CMakeFiles/ZERO_CHECK.dir
