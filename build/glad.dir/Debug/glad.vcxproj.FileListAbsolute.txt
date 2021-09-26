@@ -1,2 +1,2 @@
-C:\Users\Martin\OpenGL\build\Debug\glad.pdb
-C:\Users\Martin\OpenGL\build\glad.dir\Debug\glad.pdb
+C:\Users\Martin\Desktop\OpenGL-1\build\Debug\glad.pdb
+C:\Users\Martin\Desktop\OpenGL-1\build\glad.dir\Debug\glad.pdb

@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/Martin/OpenGL
-BuildDirectory: C:/Users/Martin/OpenGL/build
+SourceDirectory: C:/Users/Martin/Desktop/OpenGL-1
+BuildDirectory: C:/Users/Martin/Desktop/OpenGL-1/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -26,7 +26,7 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/Martin/OpenGL"
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/Martin/Desktop/OpenGL-1"
 MakeCommand: "C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

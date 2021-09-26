@@ -9,8 +9,8 @@ The output was:
 Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
 Copyright (C) Microsoft Corporation. Všechna práva vyhrazena.
 
-Vytváření sestavení bylo zahájeno 26.09.2021 0:00:05.
-Projekt C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.vcxproj v uzlu 1 (výchozí cíle).
+Vytváření sestavení bylo zahájeno 26.09.2021 19:58:36.
+Projekt C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.vcxproj v uzlu 1 (výchozí cíle).
 PrepareForBuild:
   Probíhá vytváření adresáře Debug\.
   Probíhá vytváření adresáře Debug\CompilerIdC.tlog\.
@@ -21,7 +21,7 @@ ClCompile:
   CMakeCCompilerId.c
 Link:
   C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
-  CompilerIdC.vcxproj -> C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.exe
+  CompilerIdC.vcxproj -> C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.exe
 PostBuildEvent:
   for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
   :VCEnd
@@ -29,20 +29,20 @@ PostBuildEvent:
 FinalizeBuildStatus:
   Probíhá odstraňování souboru Debug\CompilerIdC.tlog\unsuccessfulbuild.
   Probíhá aktualizace časového razítka pro Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate.
-Sestavení projektu C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.vcxproj (s výchozími cíli) bylo dokončeno.
+Sestavení projektu C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdC\CompilerIdC.vcxproj (s výchozími cíli) bylo dokončeno.
 
 Vytváření sestavení bylo úspěšně dokončeno.
     0 upozornění
     Počet chyb: 0
 
-Uplynulý čas 00:00:00.60
+Uplynulý čas 00:00:01.21
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
 
-The C compiler identification is MSVC, found in "C:/Users/Martin/OpenGL/build/CMakeFiles/3.21.2/CompilerIdC/CompilerIdC.exe"
+The C compiler identification is MSVC, found in "C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/3.21.2/CompilerIdC/CompilerIdC.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler:  
@@ -54,8 +54,8 @@ The output was:
 Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
 Copyright (C) Microsoft Corporation. Všechna práva vyhrazena.
 
-Vytváření sestavení bylo zahájeno 26.09.2021 0:00:06.
-Projekt C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.vcxproj v uzlu 1 (výchozí cíle).
+Vytváření sestavení bylo zahájeno 26.09.2021 19:58:37.
+Projekt C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.vcxproj v uzlu 1 (výchozí cíle).
 PrepareForBuild:
   Probíhá vytváření adresáře Debug\.
   Probíhá vytváření adresáře Debug\CompilerIdCXX.tlog\.
@@ -66,7 +66,7 @@ ClCompile:
   CMakeCXXCompilerId.cpp
 Link:
   C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
-  CompilerIdCXX.vcxproj -> C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.exe
+  CompilerIdCXX.vcxproj -> C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.exe
 PostBuildEvent:
   for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
   :VCEnd
@@ -74,46 +74,46 @@ PostBuildEvent:
 FinalizeBuildStatus:
   Probíhá odstraňování souboru Debug\CompilerIdCXX.tlog\unsuccessfulbuild.
   Probíhá aktualizace časového razítka pro Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate.
-Sestavení projektu C:\Users\Martin\OpenGL\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.vcxproj (s výchozími cíli) bylo dokončeno.
+Sestavení projektu C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\3.21.2\CompilerIdCXX\CompilerIdCXX.vcxproj (s výchozími cíli) bylo dokončeno.
 
 Vytváření sestavení bylo úspěšně dokončeno.
     0 upozornění
     Počet chyb: 0
 
-Uplynulý čas 00:00:00.60
+Uplynulý čas 00:00:00.75
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
 
-The CXX compiler identification is MSVC, found in "C:/Users/Martin/OpenGL/build/CMakeFiles/3.21.2/CompilerIdCXX/CompilerIdCXX.exe"
+The CXX compiler identification is MSVC, found in "C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/3.21.2/CompilerIdCXX/CompilerIdCXX.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/Martin/OpenGL/build/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_72f3d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_1990c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
 Copyright (C) Microsoft Corporation. Všechna práva vyhrazena.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.28.29335 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCCompilerABI.c
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_72f3d.dir\Debug\\" /Fd"cmTC_72f3d.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
-  cmTC_72f3d.vcxproj -> C:\Users\Martin\OpenGL\build\CMakeFiles\CMakeTmp\Debug\cmTC_72f3d.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1990c.dir\Debug\\" /Fd"cmTC_1990c.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
+  cmTC_1990c.vcxproj -> C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\CMakeTmp\Debug\cmTC_1990c.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/Martin/OpenGL/build/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_89e52.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_f911d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine verze 16.8.2+25e4d540b pro .NET Framework
 Copyright (C) Microsoft Corporation. Všechna práva vyhrazena.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.28.29335 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_89e52.dir\Debug\\" /Fd"cmTC_89e52.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_89e52.vcxproj -> C:\Users\Martin\OpenGL\build\CMakeFiles\CMakeTmp\Debug\cmTC_89e52.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f911d.dir\Debug\\" /Fd"cmTC_f911d.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_f911d.vcxproj -> C:\Users\Martin\Desktop\OpenGL-1\build\CMakeFiles\CMakeTmp\Debug\cmTC_f911d.exe
 
 
 

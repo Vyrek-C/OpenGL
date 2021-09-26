@@ -1,6 +1,6 @@
-^C:\USERS\MARTIN\OPENGL\BUILD\CMAKEFILES\AD47001FCBCE58829FF85147BC935E0D\GENERATE.STAMP.RULE
+^C:\USERS\MARTIN\DESKTOP\OPENGL-1\BUILD\CMAKEFILES\5F87A9481A0C2D86EC363A362DEF794D\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Martin/OpenGL -BC:/Users/Martin/OpenGL/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Martin/OpenGL/build/cmOpenGL.sln
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Martin/Desktop/OpenGL-1 -BC:/Users/Martin/Desktop/OpenGL-1/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Martin/Desktop/OpenGL-1/build/cmOpenGL.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

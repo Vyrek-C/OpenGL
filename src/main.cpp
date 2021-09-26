@@ -77,9 +77,12 @@ int main()
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
 		newShader.setMat4("proj", proj);
 
+		float angle = 0;
+
 		glm::mat4 translateMove = glm::mat4(1.0f);
 		translateMove = glm::translate(translateMove, glm::vec3(0.0f, 0.0f, -10.f));
-		translateMove = glm::rotate(translateMove, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
+		translateMove = glm::rotate(translateMove, angle, glm::vec3(0.0f, 1.0f, 0.0f));
 		newShader.setMat4("translateMove", translateMove);
 
 		if (ImGui::Button("Generate Triangle"))

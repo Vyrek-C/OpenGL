@@ -1,6 +1,6 @@
-^C:\USERS\MARTIN\OPENGL\CMAKELISTS.TXT
+^C:\USERS\MARTIN\DESKTOP\OPENGL-1\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Martin/OpenGL -BC:/Users/Martin/OpenGL/build --check-stamp-file C:/Users/Martin/OpenGL/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Martin/Desktop/OpenGL-1 -BC:/Users/Martin/Desktop/OpenGL-1/build --check-stamp-file C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

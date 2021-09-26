@@ -12,10 +12,7 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/includeFiles)
 set(GLFW_LIB ${CMAKE_CURRENT_SOURCE_DIR}/glfw3.lib)
 
-set_target_properties(cmOpenGL
-                    PROPERTIES
-                    CMAKE_CURRENT_BINARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
-                    )
+set_target_properties(cmOpenGL PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 file(GLOB_RECURSE IMGUISRC ${INCLUDE_DIR}/imgui/*.cpp)
 
