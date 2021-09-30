@@ -3,9 +3,10 @@ C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/Experimental.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/Nightly.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/cmOpenGL.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/Continuous.dir
-C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/PACKAGE.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/glad.dir
+C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/camera.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/imgui.dir
+C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/PACKAGE.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/RUN_TESTS.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/ALL_BUILD.dir
 C:/Users/Martin/Desktop/OpenGL-1/build/CMakeFiles/ZERO_CHECK.dir

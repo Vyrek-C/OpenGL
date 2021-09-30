@@ -1,0 +1,2 @@
+C:\Users\Martin\Desktop\OpenGL-1\build\Debug\camera.pdb
+C:\Users\Martin\Desktop\OpenGL-1\build\camera.dir\Debug\camera.pdb

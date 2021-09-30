@@ -35,33 +35,82 @@ int main()
 	}
 
 	// Creates a VertexShader, FragmentShader and a ShaderProgram that then links both of these progams together
-	Shader newShader("Shaders/vertexShader.vs", "Shaders/fragmentShader.frs");
+	Shader newShader("Shaders/vertexShader.glsl", "Shaders/fragmentShader.glsl");
+
 
 	// First two arguments specify the lower left corner of the viewport rectangle in pixels the rest sets the viewport width and height
 	glViewport(0, 0, windowWidth, windowHeight);
 
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_BACK);
 
 	srand(seed);
 
+	Camera newCamera(glm::vec3(0.0f), 0.5f);
+
 	// Holds information about each vertex. later can hold colors atd.
 
-	std::vector<glm::vec3> verticies;
+	std::vector<glm::vec3> verticies = 
+	{
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+		glm::vec3(0.5f, -0.5f, -0.5f), 
+		glm::vec3(0.5f,  0.5f, -0.5f), 
+		glm::vec3(0.5f,  0.5f, -0.5f), 
+		glm::vec3(-0.5f,  0.5f, -0.5f),
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+
+		glm::vec3(-0.5f, -0.5f,  0.5f),
+		glm::vec3(0.5f, -0.5f,  0.5f), 
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+		glm::vec3(-0.5f,  0.5f,  0.5f),
+		glm::vec3(-0.5f, -0.5f,  0.5f),
+
+		glm::vec3(-0.5f,  0.5f,  0.5f),
+		glm::vec3(-0.5f,  0.5f, -0.5f),
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+		glm::vec3(-0.5f, -0.5f,  0.5f),
+		glm::vec3(-0.5f,  0.5f,  0.5f),
+
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+		glm::vec3(0.5f,  0.5f, -0.5f), 
+		glm::vec3(0.5f, -0.5f, -0.5f), 
+		glm::vec3(0.5f, -0.5f, -0.5f), 
+		glm::vec3(0.5f, -0.5f,  0.5f), 
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+		glm::vec3(0.5f, -0.5f, -0.5f),
+		glm::vec3(0.5f, -0.5f,  0.5f),
+		glm::vec3(0.5f, -0.5f,  0.5f),
+		glm::vec3(-0.5f, -0.5f,  0.5f),
+		glm::vec3(-0.5f, -0.5f, -0.5f),
+
+		glm::vec3(-0.5f,  0.5f, -0.5f),
+		glm::vec3(0.5f,  0.5f, -0.5f), 
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+		glm::vec3(0.5f,  0.5f,  0.5f), 
+		glm::vec3(-0.5f,  0.5f,  0.5f),
+		glm::vec3(-0.5f,  0.5f, -0.5f),
+	};
 
 	VAO newVAO;
 	VBO newVBO;
 	EBO newEBO;
 
 	std::vector<unsigned int> indicies;
-	GenerateTriangle(newVAO, newVBO, newEBO, verticies, indicies);
+
+	//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
+	LinkBuffers(newVAO, newVBO, verticies);
+
 
 	InitImGui(Window);
 
 	while (!glfwWindowShouldClose(Window))
 	{
-		processInput(Window);
+		newCamera.processInput(Window);
 		glfwSwapBuffers(Window);
 		glClearColor(0.1f, 0.2f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -77,22 +126,25 @@ int main()
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
 		newShader.setMat4("proj", proj);
 
-		float angle = 0;
-
 		glm::mat4 translateMove = glm::mat4(1.0f);
 		translateMove = glm::translate(translateMove, glm::vec3(0.0f, 0.0f, -10.f));
-		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
 		translateMove = glm::rotate(translateMove, angle, glm::vec3(0.0f, 1.0f, 0.0f));
 		newShader.setMat4("translateMove", translateMove);
 
+		newCamera.CalculateView(newShader);
+
+		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
+
 		if (ImGui::Button("Generate Triangle"))
 		{
-			GenerateTriangle(newVAO, newVBO, newEBO, verticies, indicies);
+			//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
+			LinkBuffers(newVAO, newVBO, verticies);
 		}
 
 		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
 		ImGui::ColorEdit4("Color RGBA:", color);
 		ImGui::SliderFloat3("Size: ", sizeMultipe, 1.0f, 2.0f);
+		ImGui::InputInt("Seed", &seed);
 		ImGui::End();
 
 		newShader.setVec4("color", color);
@@ -101,9 +153,10 @@ int main()
 		if (bDrawTriangle)
 		{
 			newVAO.Bind();
-			newEBO.Bind();
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-			newEBO.UnBind();
+			glDrawArrays(GL_TRIANGLES, 0, verticies.size());
+ 			// newEBO.Bind();
+			// glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			// newEBO.UnBind();
 			newVAO.UnBind();
 		}
 
@@ -112,6 +165,7 @@ int main()
 
 		glfwPollEvents();
 	}
+
 	// Clean up the buffers and terminate GLFW
 	newEBO.Delete();
 	newVBO.Delete();
@@ -122,10 +176,7 @@ int main()
 
 void processInput(GLFWwindow* window)
 {
-	if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -134,7 +185,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	aspectRatio = (float)width / (float)height;
 }
 
-std::vector<glm::vec3> trinagleVertices(float radius)
+std::vector<glm::vec3> GenerateVerticies(float radius)
 {
 	glm::vec3 test = glm::vec3(1.0f);
 	std::vector<glm::vec3> vectorArray;
@@ -150,10 +201,16 @@ std::vector<glm::vec3> trinagleVertices(float radius)
 	return vectorArray;
 }
 
-void GenerateTriangle(VAO newVAO, VBO newVBO, EBO newEBO,std::vector<glm::vec3> &vertices, std::vector<unsigned int> indicies)
+void RandomGenerateTrinagle(VAO &newVAO, VBO &newVBO, EBO &newEBO, std::vector<unsigned int> &indicies)
 {
-	vertices = trinagleVertices(rand() % 5 + 1);
-	indicies = GenerateIndicies(vertices);
+	srand(seed);
+	std::vector<glm::vec3> verticies = GenerateVerticies(rand() % 5 + 1);
+	indicies = GenerateIndicies(verticies);
+	LinkBuffers(newVAO, newVBO, newEBO, verticies, indicies);
+}
+
+void LinkBuffers(VAO &newVAO, VBO &newVBO, EBO &newEBO, std::vector<glm::vec3> vertices, std::vector<unsigned int> &indicies)
+{
 	newVAO.Bind();
 
 	newVBO.Bind();	
@@ -163,10 +220,19 @@ void GenerateTriangle(VAO newVAO, VBO newVBO, EBO newEBO,std::vector<glm::vec3> 
 	newEBO.BindBufferData(indicies);
 
 	newVAO.LinkVBO(0, 0, (void*)0);
-
-
-
 	newEBO.UnBind();
+	newVBO.UnBind();
+	newVAO.UnBind();
+}
+
+void LinkBuffers(VAO &newVAO, VBO &newVBO, std::vector<glm::vec3> vertices)
+{
+	newVAO.Bind();
+
+	newVBO.Bind();	
+	newVBO.BindBufferData(vertices.size() * sizeof(glm::vec3), vertices);
+
+	newVAO.LinkVBO(0, 0, (void*)0);
 	newVBO.UnBind();
 	newVAO.UnBind();
 }
@@ -181,10 +247,10 @@ void InitImGui(GLFWwindow* window)
 	ImGui::StyleColorsDark();
 }
 
-std::vector<unsigned int> GenerateIndicies(std::vector<glm::vec3> vertices)
+std::vector<unsigned int> GenerateIndicies(std::vector<glm::vec3> verticies)
 {
 	std::vector<unsigned int> arr;
-	for(int i = 0; i < vertices.size(); i++)
+	for(int i = 0; i < verticies.size(); i++)
 	{
 		arr.push_back(i);
 	}
