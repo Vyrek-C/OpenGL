@@ -27,6 +27,10 @@ int main()
 
 	glfwMakeContextCurrent(Window);
 
+	glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
+
+	glfwSetCursorPosCallback(Window, mouse_callback);
+
 	// Makes sure GLAD was initialized successfully
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -37,7 +41,6 @@ int main()
 	// Creates a VertexShader, FragmentShader and a ShaderProgram that then links both of these progams together
 	Shader newShader("Shaders/vertexShader.glsl", "Shaders/fragmentShader.glsl");
 
-
 	// First two arguments specify the lower left corner of the viewport rectangle in pixels the rest sets the viewport width and height
 	glViewport(0, 0, windowWidth, windowHeight);
 
@@ -46,8 +49,6 @@ int main()
 	//glCullFace(GL_BACK);
 
 	srand(seed);
-
-	Camera newCamera(glm::vec3(0.0f), 0.5f);
 
 	// Holds information about each vertex. later can hold colors atd.
 
@@ -104,13 +105,14 @@ int main()
 
 	//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
 	LinkBuffers(newVAO, newVBO, verticies);
-
+	lastX = windowWidth / 2;
+	lastY = windowHeight / 2;
 
 	InitImGui(Window);
 
 	while (!glfwWindowShouldClose(Window))
 	{
-		newCamera.processInput(Window);
+		processInput(Window);
 		glfwSwapBuffers(Window);
 		glClearColor(0.1f, 0.2f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -121,17 +123,19 @@ int main()
 		ImGui::Begin("OpenGL ImGui");
 
 		newShader.use();
-
-		glm::mat4 proj = glm::mat4(1.0f);
-		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
-		newShader.setMat4("proj", proj);
-
+		
 		glm::mat4 translateMove = glm::mat4(1.0f);
 		translateMove = glm::translate(translateMove, glm::vec3(0.0f, 0.0f, -10.f));
 		translateMove = glm::rotate(translateMove, angle, glm::vec3(0.0f, 1.0f, 0.0f));
 		newShader.setMat4("translateMove", translateMove);
 
+		glm::mat4 proj = glm::mat4(1.0f);
+		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
+		newShader.setMat4("proj", proj);
+		
 		newCamera.CalculateView(newShader);
+
+
 
 		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
 
@@ -153,7 +157,7 @@ int main()
 		if (bDrawTriangle)
 		{
 			newVAO.Bind();
-			glDrawArrays(GL_TRIANGLES, 0, verticies.size());
+			glDrawArrays(GL_TRIANGLES, 0, (GLsizei)verticies.size());
  			// newEBO.Bind();
 			// glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 			// newEBO.UnBind();
@@ -176,7 +180,23 @@ int main()
 
 void processInput(GLFWwindow* window)
 {
-	
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE))
+		glfwSetWindowShouldClose(window, true);
+	if(glfwGetKey(window, GLFW_KEY_F))
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	if(glfwGetKey(window, GLFW_KEY_P))
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	newCamera.processInput(window);
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	double xOffset = xpos - lastX;
+    double yOffset = lastY - ypos;
+    lastX = xpos;
+    lastY = ypos;
+	newCamera.MouseMovement(xOffset, yOffset);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)

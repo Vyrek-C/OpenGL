@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/Users/Martin/Desktop/OpenGL-1/Release/cmOpenGL.exe"
+			"path" : "C:/Users/Martin/Desktop/OpenGL-1/Debug/cmOpenGL.exe"
 		},
 		{
-			"path" : "C:/Users/Martin/Desktop/OpenGL-1/Release/cmOpenGL.pdb"
+			"path" : "C:/Users/Martin/Desktop/OpenGL-1/Debug/cmOpenGL.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
 				}
 			],
 			"includes" : 
@@ -76,18 +76,18 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "imgui::@6890427a1f51a3e7e1df"
-		},
-		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "glad::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "camera::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "imgui::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "cmOpenGL::@6890427a1f51a3e7e1df",
@@ -96,16 +96,16 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "Release\\glad.lib",
+				"fragment" : "Debug\\glad.lib",
 				"role" : "libraries"
 			},
 			{
@@ -115,12 +115,12 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "Release\\imgui.lib",
+				"fragment" : "Debug\\imgui.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "Release\\camera.lib",
+				"fragment" : "Debug\\camera.lib",
 				"role" : "libraries"
 			},
 			{

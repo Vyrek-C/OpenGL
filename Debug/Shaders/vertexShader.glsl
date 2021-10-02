@@ -11,6 +11,6 @@ uniform vec3 size;
 
 void main()
 {
-    gl_Position = proj * translateMove * view * vec4(size * aPos, 1);
+    gl_Position = proj * view * translateMove *vec4(size * aPos, 1.0f);
     ourColor = color;
 }
