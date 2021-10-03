@@ -1,6 +1,16 @@
-#ifndef CAMERA_HEADER
-#define CAMERA_HEADER
-#include <includeHeader.h>
+#pragma once
+
+#include <iostream>
+
+#include <HeaderFiles/Shader.h>
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/range.hpp>
+#include <glm/gtc/random.inl>
 
 
 class Camera
@@ -21,9 +31,5 @@ protected:
 private:
     void RecalculateVectors();
     float desiredSpeed, cameraSpeed, deltaTime, currentFrame, lastFrame;
-    float lastX, lastY;
     float pitch, yaw;
-    float sensitivity = 0.1f;
 };
-
-#endif

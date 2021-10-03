@@ -1,3 +1,4 @@
+#pragma once
 #include "../geometric.hpp"
 #include "../exponential.hpp"
 #include "../trigonometric.hpp"

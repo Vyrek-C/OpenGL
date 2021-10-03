@@ -1,4 +1,4 @@
-#include <HeaderFiles/VAO.h>
+#include <HeaderFiles/VBO.h>
 
 
 VBO::VBO()

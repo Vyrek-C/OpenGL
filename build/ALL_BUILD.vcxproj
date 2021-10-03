@@ -170,10 +170,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Martin\Desktop\OpenGL-1\build\camera.vcxproj">
-      <Project>{528E2606-3A8E-3F4B-B4F9-5D3DAED53E49}</Project>
-      <Name>camera</Name>
-    </ProjectReference>
     <ProjectReference Include="C:\Users\Martin\Desktop\OpenGL-1\build\cmOpenGL.vcxproj">
       <Project>{7CC606CF-674F-3D31-80BA-9498B7493EF4}</Project>
       <Name>cmOpenGL</Name>

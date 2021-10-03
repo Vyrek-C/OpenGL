@@ -104,9 +104,7 @@ int main()
 	std::vector<unsigned int> indicies;
 
 	//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
-	LinkBuffers(newVAO, newVBO, verticies);
-	lastX = windowWidth / 2;
-	lastY = windowHeight / 2;
+	newObject.LinkBuffers(newVAO, newVBO, verticies);
 
 	InitImGui(Window);
 
@@ -123,11 +121,8 @@ int main()
 		ImGui::Begin("OpenGL ImGui");
 
 		newShader.use();
-		
-		glm::mat4 translateMove = glm::mat4(1.0f);
-		translateMove = glm::translate(translateMove, glm::vec3(0.0f, 0.0f, -10.f));
-		translateMove = glm::rotate(translateMove, angle, glm::vec3(0.0f, 1.0f, 0.0f));
-		newShader.setMat4("translateMove", translateMove);
+
+		newShader.setMat4("translateMove", newObject.MoveObject(glm::vec3(0.0f, 0.0f, 10.f)));
 
 		glm::mat4 proj = glm::mat4(1.0f);
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
@@ -135,14 +130,12 @@ int main()
 		
 		newCamera.CalculateView(newShader);
 
-
-
 		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
 
 		if (ImGui::Button("Generate Triangle"))
 		{
 			//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
-			LinkBuffers(newVAO, newVBO, verticies);
+			newObject.LinkBuffers(newVAO, newVBO, verticies);
 		}
 
 		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
@@ -205,58 +198,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	aspectRatio = (float)width / (float)height;
 }
 
-std::vector<glm::vec3> GenerateVerticies(float radius)
-{
-	glm::vec3 test = glm::vec3(1.0f);
-	std::vector<glm::vec3> vectorArray;
-	glm::vec3 centerCircle = glm::vec3(0.0f, 0.0f ,0.0f);
-	float angle = 0.0f;
-	for (int i = 0; i < 3; i++)
-	{
-		angle += rand() % 20 + 20;
-		glm::vec3 circleVector = glm::vec3(glm::cos(angle) * radius, glm::sin(angle), 0.0f);
-		glm::vec3 finalVector = centerCircle + circleVector;
-		vectorArray.push_back(finalVector);
-	}
-	return vectorArray;
-}
-
-void RandomGenerateTrinagle(VAO &newVAO, VBO &newVBO, EBO &newEBO, std::vector<unsigned int> &indicies)
-{
-	srand(seed);
-	std::vector<glm::vec3> verticies = GenerateVerticies(rand() % 5 + 1);
-	indicies = GenerateIndicies(verticies);
-	LinkBuffers(newVAO, newVBO, newEBO, verticies, indicies);
-}
-
-void LinkBuffers(VAO &newVAO, VBO &newVBO, EBO &newEBO, std::vector<glm::vec3> vertices, std::vector<unsigned int> &indicies)
-{
-	newVAO.Bind();
-
-	newVBO.Bind();	
-	newVBO.BindBufferData(vertices.size() * sizeof(glm::vec3), vertices);
-
-	newEBO.Bind();
-	newEBO.BindBufferData(indicies);
-
-	newVAO.LinkVBO(0, 0, (void*)0);
-	newEBO.UnBind();
-	newVBO.UnBind();
-	newVAO.UnBind();
-}
-
-void LinkBuffers(VAO &newVAO, VBO &newVBO, std::vector<glm::vec3> vertices)
-{
-	newVAO.Bind();
-
-	newVBO.Bind();	
-	newVBO.BindBufferData(vertices.size() * sizeof(glm::vec3), vertices);
-
-	newVAO.LinkVBO(0, 0, (void*)0);
-	newVBO.UnBind();
-	newVAO.UnBind();
-}
-
 void InitImGui(GLFWwindow* window)
 {
 	IMGUI_CHECKVERSION();
@@ -265,14 +206,4 @@ void InitImGui(GLFWwindow* window)
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 	ImGui::StyleColorsDark();
-}
-
-std::vector<unsigned int> GenerateIndicies(std::vector<glm::vec3> verticies)
-{
-	std::vector<unsigned int> arr;
-	for(int i = 0; i < verticies.size(); i++)
-	{
-		arr.push_back(i);
-	}
-	return arr;
 }

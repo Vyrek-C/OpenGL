@@ -1,13 +1,18 @@
-#ifndef VBO_H
-#define VBO_H
+#pragma once
 
-#include <includeHeader.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <vector>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/range.hpp>
+#include <glm/gtc/random.inl>
 
 class VBO
 {
 public:
-
-
 	unsigned int ID;
 	VBO();
 	void Bind();
@@ -19,5 +24,3 @@ public:
 		return ID;
 	}
 };
-
-#endif

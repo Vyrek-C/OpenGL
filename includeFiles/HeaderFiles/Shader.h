@@ -1,15 +1,19 @@
-#ifndef SHADER_H
-#define SHADER_H
+#pragma once
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
+#include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <iostream>
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/range.hpp>
+#include <glm/gtc/random.inl>
+
 
 class Shader
 {
@@ -139,4 +143,3 @@ private:
 		}
 	}
 };
-#endif
