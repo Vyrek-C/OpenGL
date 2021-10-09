@@ -45,6 +45,7 @@ void Camera::CalculateView(Shader &ourShader)
 
 void Camera::MouseMovement(double xpos, double ypos)
 {
+
 	double sensitivity = 0.1f;
     xpos *= sensitivity;
     ypos *= sensitivity;

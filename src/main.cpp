@@ -22,10 +22,10 @@ int main()
 		glfwTerminate();
 		return -1;
 	}
-
 	glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
 
 	glfwMakeContextCurrent(Window);
+
 
 	glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
 
@@ -103,10 +103,15 @@ int main()
 
 	std::vector<unsigned int> indicies;
 
-	//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
+	//newObject.RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies, seed);
 	newObject.LinkBuffers(newVAO, newVBO, verticies);
 
-	InitImGui(Window);
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	ImGui_ImplGlfw_InitForOpenGL(Window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+	ImGui::StyleColorsDark();
 
 	while (!glfwWindowShouldClose(Window))
 	{
@@ -119,7 +124,6 @@ int main()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 		ImGui::Begin("OpenGL ImGui");
-
 		newShader.use();
 
 		newShader.setMat4("translateMove", newObject.MoveObject(glm::vec3(0.0f, 0.0f, 10.f)));
@@ -128,14 +132,20 @@ int main()
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
 		newShader.setMat4("proj", proj);
 		
-		newCamera.CalculateView(newShader);
+		if(!io.WantCaptureMouse)
+		{
+			newCamera.CalculateView(newShader);
+		}
 
 		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
+		ImGui::Checkbox("Randomly generate triangle?: ", &bRGTriangle);
 
 		if (ImGui::Button("Generate Triangle"))
 		{
-			//RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies);
-			newObject.LinkBuffers(newVAO, newVBO, verticies);
+			if(bRGTriangle)
+				newObject.RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies, seed);
+			else
+				newObject.LinkBuffers(newVAO, newVBO, verticies);
 		}
 
 		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
@@ -150,10 +160,16 @@ int main()
 		if (bDrawTriangle)
 		{
 			newVAO.Bind();
-			glDrawArrays(GL_TRIANGLES, 0, (GLsizei)verticies.size());
- 			// newEBO.Bind();
-			// glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-			// newEBO.UnBind();
+			if(bRGTriangle)
+			{
+				newEBO.Bind();
+				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+				newEBO.UnBind();
+			}
+			else
+			{
+				glDrawArrays(GL_TRIANGLES, 0, (GLsizei)verticies.size());
+			}
 			newVAO.UnBind();
 		}
 
@@ -185,6 +201,13 @@ void processInput(GLFWwindow* window)
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
+	if(firstMouse)
+	{
+		glfwSetCursorPos(window, 0, 0);
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
 	double xOffset = xpos - lastX;
     double yOffset = lastY - ypos;
     lastX = xpos;

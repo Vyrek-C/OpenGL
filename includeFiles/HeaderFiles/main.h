@@ -55,6 +55,8 @@ float angle = 0;
 float color[4] = { 0.2f, 0.6f, 0.5f, 1.0f };
 float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
 bool bDrawTriangle = true;
+bool bRGTriangle = false;
+bool firstMouse = true;
 int seed = (int)time(NULL);
 
 #endif
