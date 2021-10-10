@@ -85,7 +85,6 @@ int main()
 		glm::mat4 proj = glm::mat4(1.0f);
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
 		newShader.setMat4("proj", proj);
-		
 
 		if(!io.WantCaptureMouse)
 		{

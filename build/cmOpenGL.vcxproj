@@ -315,11 +315,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Camera.cpp" />
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\EBO.cpp" />
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Object.cpp" />
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Terrain.cpp" />
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\VAO.cpp" />
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\VBO.cpp" />
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\main.cpp" />
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Martin\Desktop\OpenGL-1\build\ZERO_CHECK.vcxproj">
