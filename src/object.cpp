@@ -14,7 +14,6 @@ glm::mat4 Object::MoveObject(glm::vec3 position)
 
 std::vector<glm::vec3> Object::GenerateVerticies(float radius)
 {
-    glm::vec3 test = glm::vec3(1.0f);
 	std::vector<glm::vec3> vectorArray;
 	glm::vec3 centerCircle = glm::vec3(0.0f, 0.0f ,0.0f);
 	float angle = 0.0f;
