@@ -51,60 +51,14 @@ int main()
 	srand(seed);
 
 	// Holds information about each vertex. later can hold colors atd.
-
-	std::vector<glm::vec3> verticies = 
-	{
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-		glm::vec3(0.5f, -0.5f, -0.5f), 
-		glm::vec3(0.5f,  0.5f, -0.5f), 
-		glm::vec3(0.5f,  0.5f, -0.5f), 
-		glm::vec3(-0.5f,  0.5f, -0.5f),
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-
-		glm::vec3(-0.5f, -0.5f,  0.5f),
-		glm::vec3(0.5f, -0.5f,  0.5f), 
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-		glm::vec3(-0.5f,  0.5f,  0.5f),
-		glm::vec3(-0.5f, -0.5f,  0.5f),
-
-		glm::vec3(-0.5f,  0.5f,  0.5f),
-		glm::vec3(-0.5f,  0.5f, -0.5f),
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-		glm::vec3(-0.5f, -0.5f,  0.5f),
-		glm::vec3(-0.5f,  0.5f,  0.5f),
-
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-		glm::vec3(0.5f,  0.5f, -0.5f), 
-		glm::vec3(0.5f, -0.5f, -0.5f), 
-		glm::vec3(0.5f, -0.5f, -0.5f), 
-		glm::vec3(0.5f, -0.5f,  0.5f), 
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-		glm::vec3(0.5f, -0.5f, -0.5f),
-		glm::vec3(0.5f, -0.5f,  0.5f),
-		glm::vec3(0.5f, -0.5f,  0.5f),
-		glm::vec3(-0.5f, -0.5f,  0.5f),
-		glm::vec3(-0.5f, -0.5f, -0.5f),
-
-		glm::vec3(-0.5f,  0.5f, -0.5f),
-		glm::vec3(0.5f,  0.5f, -0.5f), 
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-		glm::vec3(0.5f,  0.5f,  0.5f), 
-		glm::vec3(-0.5f,  0.5f,  0.5f),
-		glm::vec3(-0.5f,  0.5f, -0.5f),
-	};
+	std::vector<glm::vec3> verticies;
 
 	VAO newVAO;
 	VBO newVBO;
 	EBO newEBO;
 
-	std::vector<unsigned int> indicies;
-
-	//newObject.RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies, seed);
-	newObject.LinkBuffers(newVAO, newVBO, verticies);
+	std::vector<unsigned int> indicies = newTerrain.GenerateTerrain(verticies);
+	newObject.LinkBuffers(newVAO, newVBO, newEBO, verticies, indicies);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -126,12 +80,13 @@ int main()
 		ImGui::Begin("OpenGL ImGui");
 		newShader.use();
 
-		newShader.setMat4("translateMove", newObject.MoveObject(glm::vec3(0.0f, 0.0f, 10.f)));
+		newShader.setMat4("translateMove", newObject.MoveObject(glm::vec3(0.0f, -5.0f, 0.f)));
 
 		glm::mat4 proj = glm::mat4(1.0f);
 		proj = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.f);
 		newShader.setMat4("proj", proj);
 		
+
 		if(!io.WantCaptureMouse)
 		{
 			newCamera.CalculateView(newShader);
@@ -140,13 +95,13 @@ int main()
 		ImGui::SliderAngle("Rotate", &angle, -360.f, 360.f);
 		ImGui::Checkbox("Randomly generate triangle?: ", &bRGTriangle);
 
-		if (ImGui::Button("Generate Triangle"))
-		{
-			if(bRGTriangle)
-				newObject.RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies, seed);
-			else
-				newObject.LinkBuffers(newVAO, newVBO, verticies);
-		}
+		// if (ImGui::Button("Generate Triangle"))
+		// {
+		// 	if(bRGTriangle)
+		// 		newObject.RandomGenerateTrinagle(newVAO, newVBO, newEBO, indicies, seed);
+		// 	else
+		// 		newObject.LinkBuffers(newVAO, newVBO, verticies);
+		// }
 
 		ImGui::Checkbox("Draw Triangle?", &bDrawTriangle);
 		ImGui::ColorEdit4("Color RGBA:", color);
@@ -160,16 +115,19 @@ int main()
 		if (bDrawTriangle)
 		{
 			newVAO.Bind();
-			if(bRGTriangle)
-			{
-				newEBO.Bind();
-				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-				newEBO.UnBind();
-			}
-			else
-			{
-				glDrawArrays(GL_TRIANGLES, 0, (GLsizei)verticies.size());
-			}
+			newEBO.Bind();
+			glDrawElements(GL_TRIANGLES, indicies.size(), GL_UNSIGNED_INT, 0);
+			// if(bRGTriangle)
+			// {
+			// 	newEBO.Bind();
+			// 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			// 	newEBO.UnBind();
+			// }
+			// else
+			// {
+			// 	glDrawArrays(GL_TRIANGLES, 0, (GLsizei)verticies.size());
+			// }
+			newEBO.UnBind();
 			newVAO.UnBind();
 		}
 
@@ -185,6 +143,7 @@ int main()
 	newVAO.Delete();
 	glfwTerminate();
 	return 0;
+
 }
 
 void processInput(GLFWwindow* window)
@@ -195,6 +154,10 @@ void processInput(GLFWwindow* window)
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	if(glfwGetKey(window, GLFW_KEY_P))
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	if(glfwGetKey(window, GLFW_KEY_G))
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	if(glfwGetKey(window, GLFW_KEY_H))
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	newCamera.processInput(window);
 }

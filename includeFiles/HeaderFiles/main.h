@@ -14,6 +14,7 @@
 #include <HeaderFiles/VAO.H>
 #include <HeaderFiles/VBO.H>
 #include <HeaderFiles/EBO.h>
+#include <Terrain/Terrain.h>
 #include <Object/object.h>
 #include <Camera/Camera.h>
 
@@ -27,6 +28,8 @@
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
 
+int seed = (int)time(NULL);
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void InitImGui(GLFWwindow* window);
@@ -38,6 +41,9 @@ void processInput(GLFWwindow* window);
 Camera newCamera(glm::vec3(0.0f), 2.f);
 
 Object newObject;
+
+
+Terrain newTerrain(20, 20, seed);
 
 const int windowWidth = 800;
 const int windowHeight = 600;
@@ -57,6 +63,5 @@ float sizeMultipe[3] = { 1.0f, 1.0f, 1.0f };
 bool bDrawTriangle = true;
 bool bRGTriangle = false;
 bool firstMouse = true;
-int seed = (int)time(NULL);
 
 #endif

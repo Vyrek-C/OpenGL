@@ -7,6 +7,9 @@
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\EBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\VAO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
