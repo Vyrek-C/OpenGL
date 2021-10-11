@@ -21,5 +21,9 @@ public:
 
 private:
     int xSize, zSize;
+    int triangleIndex = 0;
+    int vert = 0;
+    std::vector<unsigned int> indicies;
     FastNoiseLite perlinNoise;
+    void AddTriangle(int a, int b, int c);
 };

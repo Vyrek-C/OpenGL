@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Martin\Desktop\OpenGL-1\build\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Martin\Desktop\OpenGL-master\build\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Martin\Desktop\OpenGL-1\Debug\cmOpenGL.exe</FullPath>
+      <FullPath>C:\Users\Martin\Desktop\OpenGL-master\Debug\cmOpenGL.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

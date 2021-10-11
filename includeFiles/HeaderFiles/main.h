@@ -43,7 +43,7 @@ Camera newCamera(glm::vec3(0.0f), 2.f);
 Object newObject;
 
 
-Terrain newTerrain(20, 20, seed);
+Terrain newTerrain(128, 128, seed);
 
 const int windowWidth = 800;
 const int windowHeight = 600;
