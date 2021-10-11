@@ -39,7 +39,7 @@ int main()
 	}
 
 	// Creates a VertexShader, FragmentShader and a ShaderProgram that then links both of these progams together
-	Shader newShader("Shaders/vertexShader.glsl", "Shaders/fragmentShader.glsl");
+	Shader newShader("../Shaders/vertexShader.glsl", "../Shaders/fragmentShader.glsl");
 
 	// First two arguments specify the lower left corner of the viewport rectangle in pixels the rest sets the viewport width and height
 	glViewport(0, 0, windowWidth, windowHeight);

@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Camera.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\EBO.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\EBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Object.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\Terrain.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\VAO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\VAO.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\VBO.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-1\src\main.cpp">
+    <ClCompile Include="C:\Users\Martin\Desktop\OpenGL-master\src\object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Martin\Desktop\OpenGL-1\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Martin\Desktop\OpenGL-master\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{24536979-B6C9-3BC0-891C-3F56C6D69AE9}</UniqueIdentifier>
+      <UniqueIdentifier>{CDF1015C-B2CF-3BB7-950A-5BEE5050F214}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
