@@ -1,2 +1,0 @@
-C:\Users\Martin\Desktop\OpenGL-master\build\Debug\imgui.pdb
-C:\Users\Martin\Desktop\OpenGL-master\build\imgui.dir\Debug\imgui.pdb
